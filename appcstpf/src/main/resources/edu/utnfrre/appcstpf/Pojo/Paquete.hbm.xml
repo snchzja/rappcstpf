@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/06/2015 21:03:31 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="edu.utnfrre.appcstpf.Pojo.Paquete" table="Paquete" catalog="dbappcstpf" optimistic-lock="version">
+        <id name="paqueteId" type="int">
+            <column name="paqueteID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="seguro" class="edu.utnfrre.appcstpf.Pojo.Seguro" fetch="select">
+            <column name="seguroPaquete" not-null="true" />
+        </many-to-one>
+        <many-to-one name="servicio" class="edu.utnfrre.appcstpf.Pojo.Servicio" fetch="select">
+            <column name="servicioPaquete" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sucursalByDestinoPaquete" class="edu.utnfrre.appcstpf.Pojo.Sucursal" fetch="select">
+            <column name="destinoPaquete" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sucursalByOrigenPaquete" class="edu.utnfrre.appcstpf.Pojo.Sucursal" fetch="select">
+            <column name="origenPaquete" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="edu.utnfrre.appcstpf.Pojo.Usuario" fetch="select">
+            <column name="clientePaquete" length="15" not-null="true" />
+        </many-to-one>
+        <property name="pesoPaquete" type="big_decimal">
+            <column name="pesoPaquete" precision="4" scale="4" not-null="true" />
+        </property>
+        <property name="costoBasicoPaquete" type="big_decimal">
+            <column name="costoBasicoPaquete" precision="8" scale="4" not-null="true" />
+        </property>
+        <property name="costoSinSeguroPaquete" type="big_decimal">
+            <column name="costoSinSeguroPaquete" precision="8" scale="4" not-null="true" />
+        </property>
+        <property name="costoTotalPaquete" type="big_decimal">
+            <column name="costoTotalPaquete" precision="8" scale="4" not-null="true" />
+        </property>
+        <property name="pagadoPaquete" type="boolean">
+            <column name="pagadoPaquete" not-null="true" />
+        </property>
+        <property name="distanciaPaquete" type="big_decimal">
+            <column name="distanciaPaquete" precision="6" scale="4" not-null="true" />
+        </property>
+        <property name="nombreServicio" type="string">
+            <column name="nombreServicio" length="20" not-null="true" />
+        </property>
+        <property name="kgPorExcesoPaquete" type="int">
+            <column name="kgPorExcesoPaquete" not-null="true" />
+        </property>
+        <property name="estampillasPorExcesoServicio" type="int">
+            <column name="estampillasPorExcesoServicio" not-null="true" />
+        </property>
+        <property name="precioBasicoServicio" type="big_decimal">
+            <column name="precioBasicoServicio" precision="8" scale="4" />
+        </property>
+        <property name="kgBasicoServicio" type="java.lang.Integer">
+            <column name="kgBasicoServicio" />
+        </property>
+        <property name="tieneSeguroPaquete" type="boolean">
+            <column name="tieneSeguroPaquete" not-null="true" />
+        </property>
+        <property name="montoAseguradoPaquete" type="big_decimal">
+            <column name="montoAseguradoPaquete" precision="8" scale="4" />
+        </property>
+        <property name="comisionSeguroPaquete" type="big_decimal">
+            <column name="comisionSeguroPaquete" precision="4" scale="4" />
+        </property>
+        <property name="costoSeguroPaquete" type="big_decimal">
+            <column name="costoSeguroPaquete" precision="8" scale="4" />
+        </property>
+        <property name="dniRemitente" type="int">
+            <column name="dniRemitente" not-null="true" />
+        </property>
+        <property name="nombreRemitente" type="string">
+            <column name="nombreRemitente" length="40" />
+        </property>
+        <property name="apellidoRemitente" type="string">
+            <column name="apellidoRemitente" length="40" />
+        </property>
+        <property name="direcionRemitente" type="string">
+            <column name="direcionRemitente" length="50" />
+        </property>
+        <property name="telefonoRemitinte" type="string">
+            <column name="telefonoRemitinte" length="20" />
+        </property>
+        <property name="codigoPostalRemitente" type="java.lang.Integer">
+            <column name="codigoPostalRemitente" />
+        </property>
+        <property name="emailRemitente" type="string">
+            <column name="emailRemitente" length="40" />
+        </property>
+        <property name="dniDestinatario" type="int">
+            <column name="dniDestinatario" not-null="true" />
+        </property>
+        <property name="nombreDestinatario" type="string">
+            <column name="nombreDestinatario" length="40" />
+        </property>
+        <property name="apellidoDestinatario" type="string">
+            <column name="apellidoDestinatario" length="40" />
+        </property>
+        <property name="direcionDestinatario" type="string">
+            <column name="direcionDestinatario" length="50" />
+        </property>
+        <property name="telefonoDestinatario" type="string">
+            <column name="telefonoDestinatario" length="20" />
+        </property>
+        <property name="codigoPostalDestinatario" type="java.lang.Integer">
+            <column name="codigoPostalDestinatario" />
+        </property>
+        <property name="emailDestinatario" type="string">
+            <column name="emailDestinatario" length="40" />
+        </property>
+        <property name="fechaRegistro" type="timestamp">
+            <column name="fechaRegistro" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="fechaModificacion" length="19" not-null="true" />
+        </property>
+        <set name="paquetesPorTransportes" table="PaquetesPorTransporte" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="paqueteID" not-null="true" />
+            </key>
+            <one-to-many class="edu.utnfrre.appcstpf.Pojo.PaquetesPorTransporte" />
+        </set>
+        <one-to-one name="factura" class="edu.utnfrre.appcstpf.Pojo.Factura"></one-to-one>
+        <set name="estados" table="Estado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="paqueteID" not-null="true" />
+            </key>
+            <one-to-many class="edu.utnfrre.appcstpf.Pojo.Estado" />
+        </set>
+    </class>
+</hibernate-mapping>

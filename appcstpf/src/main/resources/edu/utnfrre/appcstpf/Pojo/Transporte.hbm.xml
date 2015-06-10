@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/06/2015 21:03:31 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="edu.utnfrre.appcstpf.Pojo.Transporte" table="Transporte" catalog="dbappcstpf" optimistic-lock="version">
+        <id name="transporteId" type="int">
+            <column name="transporteID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="camion" class="edu.utnfrre.appcstpf.Pojo.Camion" fetch="select">
+            <column name="camionTransporte" length="6" not-null="true" />
+        </many-to-one>
+        <property name="distanciaTotalTransporte" type="java.lang.Double">
+            <column name="distanciaTotalTransporte" precision="22" scale="0" />
+        </property>
+        <property name="fechaRegistro" type="timestamp">
+            <column name="fechaRegistro" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="fechaModificacion" length="19" not-null="true" />
+        </property>
+        <set name="paquetesPorTransportes" table="PaquetesPorTransporte" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="transporteID" not-null="true" />
+            </key>
+            <one-to-many class="edu.utnfrre.appcstpf.Pojo.PaquetesPorTransporte" />
+        </set>
+        <set name="rutasPorTransportes" table="RutasPorTransporte" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="transporteID" not-null="true" />
+            </key>
+            <one-to-many class="edu.utnfrre.appcstpf.Pojo.RutasPorTransporte" />
+        </set>
+    </class>
+</hibernate-mapping>

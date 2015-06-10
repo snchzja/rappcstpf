@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/06/2015 21:03:31 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="edu.utnfrre.appcstpf.Pojo.Seguro" table="Seguro" catalog="dbappcstpf" optimistic-lock="version">
+        <id name="seguroId" type="int">
+            <column name="seguroID" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreSeguro" type="string">
+            <column name="nombreSeguro" length="20" />
+        </property>
+        <property name="descSeguri" type="string">
+            <column name="descSeguri" length="65535" />
+        </property>
+        <property name="montoMaximoSeguro" type="big_decimal">
+            <column name="montoMaximoSeguro" precision="8" scale="4" />
+        </property>
+        <property name="montoMinimoSeguro" type="big_decimal">
+            <column name="montoMinimoSeguro" precision="8" scale="4" />
+        </property>
+        <property name="comisionPorEnvio" type="big_decimal">
+            <column name="comisionPorEnvio" precision="4" scale="4" />
+        </property>
+        <property name="fechaRegistro" type="timestamp">
+            <column name="fechaRegistro" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="fechaModificacion" length="19" not-null="true" />
+        </property>
+        <set name="paquetes" table="Paquete" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="seguroPaquete" not-null="true" />
+            </key>
+            <one-to-many class="edu.utnfrre.appcstpf.Pojo.Paquete" />
+        </set>
+    </class>
+</hibernate-mapping>

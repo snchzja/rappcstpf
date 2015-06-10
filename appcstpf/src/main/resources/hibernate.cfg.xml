@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dbappcstpf?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">toor</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/Transporte.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/PaquetesPorTransporte.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/Empleado.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/Login.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/Estado.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/RutasPorTransporte.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/Servicio.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/Paquete.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/TipoEstado.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/Sucursal.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/Seguro.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/Localidad.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/Usuario.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/Pais.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/Factura.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/Gerente.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/Camion.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/Ruta.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/Region.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/Role.hbm.xml"/>
+    <mapping resource="edu/utnfrre/appcstpf/Pojo/Provincia.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

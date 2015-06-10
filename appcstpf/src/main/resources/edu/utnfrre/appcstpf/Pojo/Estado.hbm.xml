@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/06/2015 21:03:31 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="edu.utnfrre.appcstpf.Pojo.Estado" table="Estado" catalog="dbappcstpf" optimistic-lock="version">
+        <composite-id name="id" class="edu.utnfrre.appcstpf.Pojo.EstadoId">
+            <key-property name="tipoEstadoId" type="char">
+                <column name="tipoEstadoID" length="1" />
+            </key-property>
+            <key-property name="paqueteId" type="int">
+                <column name="paqueteID" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="empleado" class="edu.utnfrre.appcstpf.Pojo.Empleado" fetch="select">
+            <column name="empleadoEstado" />
+        </many-to-one>
+        <many-to-one name="paquete" class="edu.utnfrre.appcstpf.Pojo.Paquete" update="false" insert="false" fetch="select">
+            <column name="paqueteID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sucursal" class="edu.utnfrre.appcstpf.Pojo.Sucursal" fetch="select">
+            <column name="sucursalEstado" />
+        </many-to-one>
+        <many-to-one name="tipoEstado" class="edu.utnfrre.appcstpf.Pojo.TipoEstado" update="false" insert="false" fetch="select">
+            <column name="tipoEstadoID" length="1" not-null="true" />
+        </many-to-one>
+        <property name="fechaRegistro" type="timestamp">
+            <column name="fechaRegistro" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="fechaModificacion" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

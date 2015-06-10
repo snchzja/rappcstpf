@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/06/2015 21:03:31 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="edu.utnfrre.appcstpf.Pojo.Empleado" table="Empleado" catalog="dbappcstpf" optimistic-lock="version">
+        <id name="legajoEmpleado" type="int">
+            <column name="legajoEmpleado" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sucursal" class="edu.utnfrre.appcstpf.Pojo.Sucursal" fetch="select">
+            <column name="sucrsalTrabajaEmpleado" not-null="true" />
+        </many-to-one>
+        <property name="usuario" type="string">
+            <column name="usuario" length="15" not-null="true" unique="true" />
+        </property>
+        <property name="contrasenia" type="string">
+            <column name="contrasenia" length="700" not-null="true" />
+        </property>
+        <property name="dniEmpleado" type="int">
+            <column name="dniEmpleado" not-null="true" />
+        </property>
+        <property name="nombreEmpleado" type="string">
+            <column name="nombreEmpleado" length="40" not-null="true" />
+        </property>
+        <property name="apellidoEmpleado" type="string">
+            <column name="apellidoEmpleado" length="40" not-null="true" />
+        </property>
+        <property name="domicilioEmpleado" type="string">
+            <column name="domicilioEmpleado" length="50" not-null="true" />
+        </property>
+        <property name="telefonoEmpleado" type="string">
+            <column name="telefonoEmpleado" length="20" />
+        </property>
+        <property name="emailEmpleado" type="string">
+            <column name="emailEmpleado" length="40" />
+        </property>
+        <property name="sexoEmpleado" type="char">
+            <column name="sexoEmpleado" length="1" not-null="true" />
+        </property>
+        <property name="fechaNacimientoEmpleado" type="date">
+            <column name="fechaNacimientoEmpleado" length="10" not-null="true" />
+        </property>
+        <property name="codigoPostalEmpleado" type="int">
+            <column name="codigoPostalEmpleado" not-null="true" />
+        </property>
+        <property name="cargoEmpleado" type="string">
+            <column name="cargoEmpleado" length="20" not-null="true" />
+        </property>
+        <property name="departamentoEmpleado" type="string">
+            <column name="departamentoEmpleado" length="20" not-null="true" />
+        </property>
+        <property name="fechaIngresoEmpresa" type="timestamp">
+            <column name="fechaIngresoEmpresa" length="19" not-null="true" />
+        </property>
+        <property name="sueldoEmpleado" type="big_decimal">
+            <column name="sueldoEmpleado" precision="8" scale="4" not-null="true" />
+        </property>
+        <property name="fechaRegistro" type="timestamp">
+            <column name="fechaRegistro" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="fechaModificacion" length="19" not-null="true" />
+        </property>
+        <set name="facturas" table="Factura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="legajoEmpleado" />
+            </key>
+            <one-to-many class="edu.utnfrre.appcstpf.Pojo.Factura" />
+        </set>
+        <set name="estados" table="Estado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="empleadoEstado" />
+            </key>
+            <one-to-many class="edu.utnfrre.appcstpf.Pojo.Estado" />
+        </set>
+        <one-to-one name="gerente" class="edu.utnfrre.appcstpf.Pojo.Gerente"></one-to-one>
+    </class>
+</hibernate-mapping>

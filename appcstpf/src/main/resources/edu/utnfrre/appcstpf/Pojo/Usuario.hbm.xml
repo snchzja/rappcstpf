@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/06/2015 21:03:31 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="edu.utnfrre.appcstpf.Pojo.Usuario" table="Usuario" catalog="dbappcstpf" optimistic-lock="version">
+        <id name="usuario" type="string">
+            <column name="usuario" length="15" />
+            <generator class="assigned" />
+        </id>
+        <property name="contrasenia" type="string">
+            <column name="contrasenia" length="700" not-null="true" />
+        </property>
+        <property name="dniUsuario" type="int">
+            <column name="dniUsuario" not-null="true" />
+        </property>
+        <property name="nombreUsuario" type="string">
+            <column name="nombreUsuario" length="40" not-null="true" />
+        </property>
+        <property name="apellidoUsuario" type="string">
+            <column name="apellidoUsuario" length="40" not-null="true" />
+        </property>
+        <property name="domicilioUsuario" type="string">
+            <column name="domicilioUsuario" length="50" not-null="true" />
+        </property>
+        <property name="telefonoUsuario" type="string">
+            <column name="telefonoUsuario" length="20" />
+        </property>
+        <property name="emailUsuario" type="string">
+            <column name="emailUsuario" length="40" not-null="true" />
+        </property>
+        <property name="sexoUsuario" type="char">
+            <column name="sexoUsuario" length="1" not-null="true" />
+        </property>
+        <property name="fechaNacimientoUsuario" type="date">
+            <column name="fechaNacimientoUsuario" length="10" not-null="true" />
+        </property>
+        <property name="codigoPostalUsuario" type="java.lang.Integer">
+            <column name="codigoPostalUsuario" />
+        </property>
+        <property name="fechaRegistro" type="timestamp">
+            <column name="fechaRegistro" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="fechaModificacion" length="19" not-null="true" />
+        </property>
+        <set name="paquetes" table="Paquete" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="clientePaquete" length="15" not-null="true" />
+            </key>
+            <one-to-many class="edu.utnfrre.appcstpf.Pojo.Paquete" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/06/2015 21:03:31 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="edu.utnfrre.appcstpf.Pojo.Factura" table="Factura" catalog="dbappcstpf" optimistic-lock="version">
+        <id name="paqueteId" type="int">
+            <column name="paqueteID" />
+            <generator class="foreign">
+                <param name="property">paquete</param>
+            </generator>
+        </id>
+        <many-to-one name="empleado" class="edu.utnfrre.appcstpf.Pojo.Empleado" fetch="select">
+            <column name="legajoEmpleado" />
+        </many-to-one>
+        <one-to-one name="paquete" class="edu.utnfrre.appcstpf.Pojo.Paquete" constrained="true"></one-to-one>
+        <many-to-one name="sucursal" class="edu.utnfrre.appcstpf.Pojo.Sucursal" fetch="select">
+            <column name="sucursalId" />
+        </many-to-one>
+        <property name="numeroFactura" type="int">
+            <column name="numeroFactura" not-null="true" />
+        </property>
+        <property name="tipoFactura" type="char">
+            <column name="tipoFactura" length="1" not-null="true" />
+        </property>
+        <property name="montoTotalFactura" type="big_decimal">
+            <column name="montoTotalFactura" precision="8" scale="4" />
+        </property>
+        <property name="clienteFactura" type="string">
+            <column name="clienteFactura" length="15" />
+        </property>
+        <property name="dniCliente" type="java.lang.Integer">
+            <column name="dniCliente" />
+        </property>
+        <property name="nombreCliente" type="string">
+            <column name="nombreCliente" length="40" />
+        </property>
+        <property name="apellidoCliente" type="string">
+            <column name="apellidoCliente" length="40" />
+        </property>
+        <property name="direcionCliente" type="string">
+            <column name="direcionCliente" length="50" />
+        </property>
+        <property name="telefonoCliente" type="string">
+            <column name="telefonoCliente" length="20" />
+        </property>
+        <property name="codigoPostalCliente" type="java.lang.Integer">
+            <column name="codigoPostalCliente" />
+        </property>
+        <property name="emailCliente" type="string">
+            <column name="emailCliente" length="40" />
+        </property>
+        <property name="fechaRegistro" type="timestamp">
+            <column name="fechaRegistro" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="fechaModificacion" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

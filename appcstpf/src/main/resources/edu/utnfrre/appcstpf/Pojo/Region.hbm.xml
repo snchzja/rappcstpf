@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/06/2015 21:03:31 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="edu.utnfrre.appcstpf.Pojo.Region" table="Region" catalog="dbappcstpf" optimistic-lock="version">
+        <id name="regionId" type="int">
+            <column name="regionID" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="20" />
+        </property>
+        <property name="desdeKm" type="int">
+            <column name="desdeKM" not-null="true" />
+        </property>
+        <property name="hastaKm" type="int">
+            <column name="hastaKM" not-null="true" />
+        </property>
+        <property name="fechaRegistro" type="timestamp">
+            <column name="fechaRegistro" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="fechaModificacion" length="19" not-null="true" />
+        </property>
+        <set name="servicios" table="Servicio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="region" not-null="true" />
+            </key>
+            <one-to-many class="edu.utnfrre.appcstpf.Pojo.Servicio" />
+        </set>
+    </class>
+</hibernate-mapping>

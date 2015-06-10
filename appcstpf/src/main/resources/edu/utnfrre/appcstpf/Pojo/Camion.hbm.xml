@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/06/2015 21:03:31 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="edu.utnfrre.appcstpf.Pojo.Camion" table="Camion" catalog="dbappcstpf" optimistic-lock="version">
+        <id name="patenteCamion" type="string">
+            <column name="patenteCamion" length="6" />
+            <generator class="assigned" />
+        </id>
+        <property name="metrosCubicosCarga" type="java.lang.Integer">
+            <column name="metrosCubicosCarga" />
+        </property>
+        <property name="marcaCamion" type="string">
+            <column name="marcaCamion" length="20" />
+        </property>
+        <property name="modeloCamion" type="string">
+            <column name="modeloCamion" length="20" />
+        </property>
+        <property name="anioCamion" type="java.lang.Integer">
+            <column name="anioCamion" />
+        </property>
+        <property name="cargaMaximaKggCamion" type="java.lang.Integer">
+            <column name="cargaMaximaKGgCamion" />
+        </property>
+        <property name="descripcinCamion" type="string">
+            <column name="descripcinCamion" length="65535" />
+        </property>
+        <property name="fechaRegistro" type="timestamp">
+            <column name="fechaRegistro" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="fechaModificacion" length="19" not-null="true" />
+        </property>
+        <set name="transportes" table="Transporte" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="camionTransporte" length="6" not-null="true" />
+            </key>
+            <one-to-many class="edu.utnfrre.appcstpf.Pojo.Transporte" />
+        </set>
+    </class>
+</hibernate-mapping>

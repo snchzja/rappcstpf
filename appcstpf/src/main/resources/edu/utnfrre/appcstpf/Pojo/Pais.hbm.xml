@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/06/2015 21:03:31 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="edu.utnfrre.appcstpf.Pojo.Pais" table="Pais" catalog="dbappcstpf" optimistic-lock="version">
+        <id name="paisId" type="int">
+            <column name="paisID" />
+            <generator class="assigned" />
+        </id>
+        <property name="pais" type="string">
+            <column name="pais" length="20" />
+        </property>
+        <set name="provincias" table="Provincia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="paisID" not-null="true" />
+            </key>
+            <one-to-many class="edu.utnfrre.appcstpf.Pojo.Provincia" />
+        </set>
+    </class>
+</hibernate-mapping>

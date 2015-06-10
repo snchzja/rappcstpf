@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/06/2015 21:03:31 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="edu.utnfrre.appcstpf.Pojo.Servicio" table="Servicio" catalog="dbappcstpf" optimistic-lock="version">
+        <id name="servicioId" type="int">
+            <column name="servicioID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="region" class="edu.utnfrre.appcstpf.Pojo.Region" fetch="select">
+            <column name="region" not-null="true" />
+        </many-to-one>
+        <property name="nombreServicio" type="string">
+            <column name="nombreServicio" length="20" not-null="true" />
+        </property>
+        <property name="descServicio" type="string">
+            <column name="descServicio" length="65535" />
+        </property>
+        <property name="precioBasico" type="big_decimal">
+            <column name="precioBasico" precision="8" scale="4" />
+        </property>
+        <property name="kgBasico" type="java.lang.Integer">
+            <column name="kgBasico" />
+        </property>
+        <property name="kgPorExceso" type="java.lang.Integer">
+            <column name="kgPorExceso" />
+        </property>
+        <property name="estampillasPorExceso" type="java.lang.Integer">
+            <column name="estampillasPorExceso" />
+        </property>
+        <property name="fechaRegistro" type="timestamp">
+            <column name="fechaRegistro" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="fechaModificacion" length="19" not-null="true" />
+        </property>
+        <set name="paquetes" table="Paquete" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="servicioPaquete" not-null="true" />
+            </key>
+            <one-to-many class="edu.utnfrre.appcstpf.Pojo.Paquete" />
+        </set>
+    </class>
+</hibernate-mapping>

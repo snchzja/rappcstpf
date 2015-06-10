@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/06/2015 21:03:31 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="edu.utnfrre.appcstpf.Pojo.PaquetesPorTransporte" table="PaquetesPorTransporte" catalog="dbappcstpf" optimistic-lock="version">
+        <composite-id name="id" class="edu.utnfrre.appcstpf.Pojo.PaquetesPorTransporteId">
+            <key-property name="paqueteId" type="int">
+                <column name="paqueteID" />
+            </key-property>
+            <key-property name="transporteId" type="int">
+                <column name="transporteID" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="paquete" class="edu.utnfrre.appcstpf.Pojo.Paquete" update="false" insert="false" fetch="select">
+            <column name="paqueteID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="transporte" class="edu.utnfrre.appcstpf.Pojo.Transporte" update="false" insert="false" fetch="select">
+            <column name="transporteID" not-null="true" />
+        </many-to-one>
+        <property name="fechaRegistro" type="timestamp">
+            <column name="fechaRegistro" length="19" not-null="true" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="fechaModificacion" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
